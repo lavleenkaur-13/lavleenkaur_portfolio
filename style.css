@@ -333,6 +333,8 @@ body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   z-index: 1;
+  /* Isolate paint layers — avoids full-page repaints from animations */
+  isolation: isolate;
 }
 
 .page.is-active {
@@ -359,6 +361,8 @@ body {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  /* Contain paints to this layer so background animations don't invalidate sections */
+  contain: strict;
 }
 
 /* Subtle tint on alternating sections, but transparent enough to see bg through */
@@ -454,6 +458,9 @@ body {
   z-index: 1;
   border-radius: 50%;
   filter: blur(80px);
+  /* Promote to own compositor layer so blur doesn't trigger full repaints */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .bg-glow-1 {
@@ -491,31 +498,13 @@ body {
 }
 
 @keyframes glowFloat1 {
-
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.8;
-  }
-
-  50% {
-    transform: translate(40px, -25px) scale(1.1);
-    opacity: 1;
-  }
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+  50% { transform: translate3d(40px, -25px, 0) scale(1.1); opacity: 1; }
 }
 
 @keyframes glowFloat2 {
-
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.7;
-  }
-
-  50% {
-    transform: translate(-30px, 30px) scale(1.15);
-    opacity: 1;
-  }
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.7; }
+  50% { transform: translate3d(-30px, 30px, 0) scale(1.15); opacity: 1; }
 }
 
 /* === Floating particles (hero only) === */
@@ -2602,4 +2591,92 @@ body {
   opacity: 0.7;
   cursor: not-allowed;
   pointer-events: none;
+}
+/* ============================================================
+   PERFORMANCE: Mobile optimizations
+   Disable the most expensive GPU effects on small screens
+   ============================================================ */
+@media (max-width: 767.98px) {
+  /* Reduce glow blobs — blur + animation is the #1 mobile perf killer */
+  .bg-glow {
+    filter: blur(50px);
+    animation: none !important;
+    opacity: 0.5;
+  }
+
+  /* Stop circuit SVG animation on mobile */
+  .circuit-path,
+  .circuit-node {
+    animation: none !important;
+    opacity: 0.2;
+  }
+
+  /* Stop grid panning on mobile */
+  .bg-grid {
+    animation: none !important;
+  }
+
+  /* Particles already reduced to 12 by JS — also reduce opacity */
+  .particle {
+    opacity: 0.4;
+  }
+
+  /* Simpler bitmoji rings — stop rotation on mobile */
+  .bitmoji-ring {
+    animation: none !important;
+    opacity: 0.2;
+  }
+}
+
+/* ============================================================
+   PERFORMANCE: Font-display swap fallback
+   ============================================================ */
+@font-face {
+  font-display: swap;
+}
+
+/* ============================================================
+   PERFORMANCE: Promote cursor ring to own layer (desktop)
+   ============================================================ */
+.cursor-ring {
+  will-change: transform;
+}
+.cursor-dot {
+  will-change: transform;
+}
+
+/* ============================================================
+   INLINE SVG ICONS (replaces Bootstrap Icons font)
+   ============================================================ */
+/* Match old bi font icon sizing and alignment */
+.btn svg, .social-link svg, .hero-cta svg,
+.navbar-brand svg, .skill-popup-close svg,
+.section-subtitle svg, .skills-hint svg,
+.footer-socials svg, .project-links svg,
+.contact-form svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+
+/* Theme toggle icons */
+.toggle-icon-sun svg,
+.toggle-icon-moon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: middle;
+}
+
+/* Float badges (code-slash, braces, stars) */
+.float-badge svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Arrow-up-right in "View all on GitHub" button */
+.btn-outline-cta svg {
+  width: 0.9em;
+  height: 0.9em;
+  vertical-align: -0.1em;
 }
