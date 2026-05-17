@@ -42,54 +42,16 @@
 
   <!-- ==== FONTS ==== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <!-- ==== CRITICAL BOOTSTRAP GRID (replaces full 200KB CDN) ==== -->
-  <!-- Only the ~18 Bootstrap classes actually used in this page -->
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    .container { width: 100%; padding-right: 1rem; padding-left: 1rem; margin-right: auto; margin-left: auto; max-width: 1140px; }
-    .row { display: flex; flex-wrap: wrap; margin-right: -0.75rem; margin-left: -0.75rem; }
-    .row > * { padding-right: 0.75rem; padding-left: 0.75rem; width: 100%; }
-    .g-2 { --bs-gutter-x: 0.5rem; --bs-gutter-y: 0.5rem; }
-    .g-3 { --bs-gutter-x: 1rem; --bs-gutter-y: 1rem; }
-    .g-4 { --bs-gutter-x: 1.5rem; --bs-gutter-y: 1.5rem; }
-    .row.g-2 > *, .row.g-3 > *, .row.g-4 > * { padding-right: calc(var(--bs-gutter-x, 1rem) * .5); padding-left: calc(var(--bs-gutter-x, 1rem) * .5); margin-top: var(--bs-gutter-y, 0); }
-    .col-6 { width: 50%; }
-    .col-12 { width: 100%; }
-    .d-flex { display: flex !important; }
-    .align-items-center { align-items: center !important; }
-    .align-items-start { align-items: flex-start !important; }
-    .justify-content-between { justify-content: space-between !important; }
-    .text-center { text-align: center !important; }
-    .mb-3 { margin-bottom: 1rem !important; }
-    .mb-4 { margin-bottom: 1.5rem !important; }
-    .mt-3 { margin-top: 1rem !important; }
-    .mt-4 { margin-top: 1.5rem !important; }
-    .ms-1 { margin-left: 0.25rem !important; }
-    .btn { display: inline-flex; align-items: center; cursor: pointer; text-decoration: none; border: none; }
-    .btn-sm { padding: 0.375rem 0.875rem; font-size: 0.85rem; }
-    .btn-lg { padding: 0.75rem 1.5rem; font-size: 1.1rem; }
-    .visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
-    @media (min-width: 768px) {
-      .col-md-3 { width: 25%; }
-      .col-md-6 { width: 50%; }
-      .g-md-4 { --bs-gutter-x: 1.5rem; --bs-gutter-y: 1.5rem; }
-    }
-    @media (min-width: 992px) {
-      .col-lg-5 { width: 41.666667%; }
-      .col-lg-7 { width: 58.333333%; }
-    }
-  </style>
-
-  <!-- ==== FONTS (async — non-blocking) ==== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap"
-    onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
 
-  <!-- ==== PRELOAD LCP image ==== -->
-  <link rel="preload" as="image" href="bitmoji.png" fetchpriority="high" />
+  <!-- ==== BOOTSTRAP + ICONS ==== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
   <link rel="stylesheet" href="style.css" />
 
   <!-- ==== JSON-LD ==== -->
@@ -127,8 +89,7 @@
       justify-content: center;
       flex-direction: column;
       gap: 24px;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-      /* Don't use opacity on body — hurts LCP. Loader fades out, content visible underneath */
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
 
     html[data-theme="light"] #pageLoader {
@@ -182,17 +143,40 @@
     }
 
     @keyframes plPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(168, 85, 247, 0.4); }
-      50% { transform: scale(1.06); box-shadow: 0 0 60px rgba(168, 85, 247, 0.6); }
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+      }
+
+      50% {
+        transform: scale(1.06);
+        box-shadow: 0 0 60px rgba(168, 85, 247, 0.6);
+      }
     }
 
     @keyframes plDot {
-      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-      40% { transform: scale(1); opacity: 1; }
+
+      0%,
+      80%,
+      100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+      }
+
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .pl-logo, .pl-dots span { animation: none; }
+
+      .pl-logo,
+      .pl-dots span {
+        animation: none;
+      }
     }
   </style>
 </head>
@@ -205,19 +189,19 @@
   </div>
 
   <script>
-    // Hide loader as soon as page is interactive
+    // Hide loader when page is fully loaded
     window.addEventListener('load', function () {
       var loader = document.getElementById('pageLoader');
       if (loader) {
-        loader.classList.add('is-loaded');
-        setTimeout(function () { loader.remove(); }, 500);
+        setTimeout(function () { loader.classList.add('is-loaded'); }, 250);
+        setTimeout(function () { loader.remove(); }, 900);
       }
     });
-    // Safety: hide after 3s
+    // Safety: hide loader after 4s even if load event never fires
     setTimeout(function () {
       var loader = document.getElementById('pageLoader');
       if (loader) loader.classList.add('is-loaded');
-    }, 3000);
+    }, 4000);
   </script>
 
   <!-- ==== SCROLL PROGRESS BAR ==== -->
@@ -233,8 +217,8 @@
   <div class="noise-overlay" aria-hidden="true"></div>
   <!-- ==== THEME TOGGLE ==== -->
   <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-    <span class="toggle-icon-sun"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg></span>
-    <span class="toggle-icon-moon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/><path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/></svg></span>
+    <i class="bi bi-sun-fill toggle-icon-sun"></i>
+    <i class="bi bi-moon-stars-fill toggle-icon-moon"></i>
   </button>
 
   <!-- ==== MINIMAL NAVBAR — brand left, Contact right ==== -->
@@ -243,7 +227,7 @@
       <a class="navbar-brand" href="#" data-goto="0">
         <span class="brand-dot"></span><span class="brand-text">lavleen<span class="brand-accent">.kaur</span></span>
       </a>
-      <a class="btn btn-primary-cta btn-sm" href="#" data-goto="3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"/></svg> Contact Me</a>
+      <a class="btn btn-primary-cta btn-sm" href="#" data-goto="3"><i class="bi bi-at"></i> Contact Me</a>
     </div>
   </nav>
 
@@ -292,20 +276,19 @@
               <div class="bitmoji-ring bitmoji-ring-2"></div>
               <div class="bitmoji-inner">
                 <img src="bitmoji.png" alt="Lavleen's Bitmoji waving"
-                  width="400" height="400" fetchpriority="high" loading="eager"
                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
                 <div class="avatar-fallback" style="display:none;">
                   <span class="wave-emoji">👋</span>
                 </div>
               </div>
               <div class="float-badge float-badge-1" data-anim="float-in" data-delay="3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/></svg>
+                <i class="bi bi-code-slash"></i>
               </div>
               <div class="float-badge float-badge-2" data-anim="float-in" data-delay="4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z"/></svg>
+                <i class="bi bi-braces"></i>
               </div>
               <div class="float-badge float-badge-3" data-anim="float-in" data-delay="5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></svg>
+                <i class="bi bi-stars"></i>
               </div>
             </div>
           </div>
@@ -337,19 +320,19 @@
             <div class="hero-cta" data-anim="stagger-up" data-delay="5">
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lavleen.kaur17@gmail.com" target="_blank"
                 rel="noopener" class="btn btn-primary-cta stagger-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"/></svg> Hire Me
+                <i class="bi bi-at" aria-hidden="true"></i> Hire Me
               </a>
               <a href="lavleen-kaur-resume.pdf" target="_blank" rel="noopener"
                 class="btn btn-secondary-cta stagger-item" aria-label="View Lavleen Kaur's resume (opens in new tab)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/><path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/></svg> View Resume
+                <i class="bi bi-file-earmark-text" aria-hidden="true"></i> View Resume
               </a>
               <a href="#" data-goto="2" class="btn btn-secondary-cta stagger-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z"/></svg> View My Work
+                <i class="bi bi-grid-1x2-fill" aria-hidden="true"></i> View My Work
               </a>
               <span class="cta-divider stagger-item"></span>
               <div class="hero-socials stagger-item">
                 <a href="https://github.com/lavleenkaur-13" target="_blank" rel="noopener" class="social-link"
-                  aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+                  aria-label="GitHub"><i class="bi bi-github"></i></a>
                 <!-- <a href="#" target="_blank" rel="noopener" class="social-link" aria-label="Dribbble"><i
                     class="bi bi-dribbble"></i></a> -->
               </div>
@@ -373,7 +356,7 @@
           <h2 class="section-title" data-glitch="Things I work with">Things I work with</h2>
           <p class="section-subtitle">Frontend skillset to help you ship beautiful, fast websites.</p>
           <p class="skills-hint mono-font" data-anim="blur-up" data-delay="2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/></svg> click the icons to learn what each tool does
+            <i class="bi bi-cursor-fill"></i> click the icons to learn what each tool does
           </p>
         </div>
 
@@ -606,7 +589,7 @@
       <!-- ── SKILL NOTE POPUP (global, one instance) ── -->
       <div class="skill-popup" id="skillPopup" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="skill-popup-inner">
-          <button class="skill-popup-close" id="skillPopupClose" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button>
+          <button class="skill-popup-close" id="skillPopupClose" aria-label="Close"><i class="bi bi-x"></i></button>
           <div class="skill-popup-icon" id="skillPopupIcon"></div>
           <h4 class="skill-popup-name mono-font" id="skillPopupName"></h4>
           <p class="skill-popup-text" id="skillPopupText"></p>
@@ -632,7 +615,9 @@
             <article class="project-card">
               <div class="project-thumb">
                 <div class="project-thumb-inner project-cosmic">
-                  <img src="cosmicgalaxy.png" width="600" height="338" class="project-thumb-img" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                  <img src="cosmicgalaxy.png"
+                    alt="Cosmic Galaxy — space-themed streetwear e-commerce site with auth, orders, and wishlist built on Supabase"
+                    class="project-thumb-img" onerror="this.style.display='none'">
                 </div>
               </div>
               <div class="project-body">
@@ -645,9 +630,9 @@
                   Supabase.</p>
                 <div class="project-links">
                   <a href="https://lavleenkaur-13.github.io/cosmic-galaxy/" class="btn btn-sm btn-primary-cta"
-                    target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg> Live</a>
+                    target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Live</a>
                   <a href="https://github.com/lavleenkaur-13/cosmic-galaxy" class="btn btn-sm btn-secondary-cta"
-                    target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> Code</a>
+                    target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a>
                 </div>
               </div>
             </article>
@@ -656,7 +641,9 @@
             <article class="project-card">
               <div class="project-thumb">
                 <div class="project-thumb-inner project-pehnawa">
-                  <img src="pehnawapanjab.png" width="600" height="338" class="project-thumb-img" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                  <img src="pehnawapanjab.png"
+                    alt="Pehnawa Panjab — Punjabi heritage fashion brand website built with Bootstrap 5"
+                    class="project-thumb-img" onerror="this.style.display='none'">
                 </div>
               </div>
               <div class="project-body">
@@ -668,9 +655,9 @@
                 <p class="project-desc">Polished brand website with full Bootstrap and SEO setup.</p>
                 <div class="project-links">
                   <a href="https://lavleenkaur-13.github.io/pehnawapanjab/" class="btn btn-sm btn-primary-cta"
-                    target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg> Live</a>
+                    target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Live</a>
                   <a href="https://github.com/lavleenkaur-13/pehnawapanjab" class="btn btn-sm btn-secondary-cta"
-                    target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> Code</a>
+                    target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a>
                 </div>
               </div>
             </article>
@@ -679,7 +666,9 @@
             <article class="project-card">
               <div class="project-thumb">
                 <div class="project-thumb-inner project-seoulie">
-                  <img src="seoulie.png" width="600" height="338" class="project-thumb-img" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                  <img src="seoulie.png"
+                    alt="Seoulie — Korean fashion landing page with pastel design system and smooth scroll interactions"
+                    class="project-thumb-img" onerror="this.style.display='none'">
                 </div>
               </div>
               <div class="project-body">
@@ -691,9 +680,9 @@
                 <p class="project-desc">Clean modern landing page with Bootstrap 5 and smooth interactions.</p>
                 <div class="project-links">
                   <a href="https://lavleenkaur-13.github.io/Seoulie/" class="btn btn-sm btn-primary-cta" target="_blank"
-                    rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg> Live</a>
+                    rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Live</a>
                   <a href="https://github.com/lavleenkaur-13/Seoulie" class="btn btn-sm btn-secondary-cta"
-                    target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> Code</a>
+                    target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a>
                 </div>
               </div>
             </article>
@@ -702,7 +691,9 @@
             <article class="project-card">
               <div class="project-thumb">
                 <div class="project-thumb-inner project-loaflab">
-                  <img src="loaflab.png" width="600" height="338" class="project-thumb-img" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                  <img src="loaflab.png"
+                    alt="Loaf Lab — interactive mobile app UI prototype for an artisan bakery with dark and lime green design system"
+                    class="project-thumb-img" onerror="this.style.display='none'">
                 </div>
               </div>
               <div class="project-body">
@@ -714,9 +705,9 @@
                 <p class="project-desc">Interactive mobile app UI prototype with dark/lime aesthetic.</p>
                 <div class="project-links">
                   <a href="https://lavleenkaur-13.github.io/loaflab/" class="btn btn-sm btn-primary-cta" target="_blank"
-                    rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg> Live</a>
+                    rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Live</a>
                   <a href="https://github.com/lavleenkaur-13/loaflab" class="btn btn-sm btn-secondary-cta"
-                    target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> Code</a>
+                    target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a>
                 </div>
               </div>
             </article>
@@ -725,7 +716,7 @@
 
         <div class="text-center mt-3" data-anim="slide-up-bounce" data-delay="2">
           <a href="https://github.com/lavleenkaur-13" class="btn btn-outline-cta" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> View all on GitHub <span class="ms-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/></svg></span>
+            <i class="bi bi-github"></i> View all on GitHub <i class="bi bi-arrow-up-right ms-1"></i>
           </a>
         </div>
       </div>
@@ -771,7 +762,7 @@
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary-cta btn-lg" id="contactSubmit" aria-label="Send message">
                     <span class="contact-submit-text">Send message</span>
-                    <span class="ms-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/></svg></span>
+                    <i class="bi bi-send ms-1" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="col-12">
@@ -790,8 +781,10 @@
               <p class="footer-bio">Open to freelance projects
                 worldwide.</p>
               <div class="footer-socials">
-                <a href="https://github.com/lavleenkaur-13" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
-                <a href="mailto:lavleen.kaur17@gmail.com" aria-label="Email Lavleen"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/></svg></a>
+                <a href="https://github.com/lavleenkaur-13" target="_blank" rel="noopener" aria-label="GitHub"><i
+                    class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="mailto:lavleen.kaur17@gmail.com" aria-label="Email Lavleen"><i class="bi bi-envelope"
+                    aria-hidden="true"></i></a>
               </div>
             </div>
           </div>
@@ -806,7 +799,8 @@
 
   </main>
 
-  <script src="main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>
