@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <!-- ==== PRIMARY META ==== -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Lavleen Kaur | Frontend Developer Portfolio — HTML, CSS, Bootstrap, JavaScript</title>
+  <meta name="description"
+    content="Hey, I'm Lavleen — a frontend developer crafting seamless user experiences with HTML, CSS, Bootstrap, and JavaScript. Based in Chandigarh, open to freelance worldwide." />
+  <meta name="keywords"
+    content="Lavleen Kaur, Frontend Developer Chandigarh, Web Developer Punjab, HTML CSS JavaScript Developer, Bootstrap Developer, Figma to Code, Responsive Web Design, Freelance, BCA Student" />
+  <meta name="author" content="Lavleen Kaur" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <link rel="canonical" href="https://lavleenkaur-13.github.io/lavleenkaur_portfolio/" />
+
+  <!-- ==== OG / TWITTER ==== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lavleenkaur-13.github.io/lavleenkaur_portfolio/" />
+  <meta property="og:title" content="Lavleen Kaur | Frontend Developer Portfolio" />
+  <meta property="og:description"
+    content="Hey, I'm Lavleen — a frontend developer crafting seamless user experiences." />
+  <meta property="og:image"
+    content="https://lavleenkaur-13.github.io/lavleenkaur_portfolio/og-image.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:alt" content="Lavleen Kaur — Frontend Developer Portfolio" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Lavleen Kaur Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lavleen Kaur | Frontend Developer Portfolio" />
+  <meta name="twitter:description" content="Frontend developer from Chandigarh. Open to freelance." />
+  <meta name="twitter:image"
+    content="https://lavleenkaur-13.github.io/lavleenkaur_portfolio/og-image.svg" />
+
+  <!-- ==== ICONS ==== -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- ==== FONTS ==== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- ==== BOOTSTRAP + ICONS ==== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ==== JSON-LD ==== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lavleen Kaur",
+    "url": "https://lavleenkaur-13.github.io/lavleenkaur_portfolio/",
+    "jobTitle": "Frontend Developer",
+    "description": "Frontend Developer specializing in HTML5, CSS3, Bootstrap 5, and JavaScript.",
+    "address": {"@type": "PostalAddress", "addressLocality": "Chandigarh", "addressRegion": "Chandigarh", "addressCountry": "IN"},
+    "knowsAbout": ["HTML5", "CSS3", "Bootstrap 5", "JavaScript", "Responsive Web Design", "Figma to Code", "GitHub"],
+    "affiliation": {"@type": "EducationalOrganization", "name": "Guru Kashi University"},
+    "sameAs": ["https://github.com/lavleenkaur-13"]
+  }
+  </script>
+
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+
+  <!-- ==== INLINE PAGE LOADER (renders before anything) ==== -->
+  <style>
+    #pageLoader {
+      position: fixed;
+      inset: 0;
+      background: #0a0a0f;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    html[data-theme="light"] #pageLoader {
+      background: #fafafc;
+    }
+
+    #pageLoader.is-loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .pl-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #a855f7, #22d3ee);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0a0a0f;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      animation: plPulse 1.4s ease-in-out infinite;
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+    }
+
+    .pl-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .pl-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #a855f7;
+      animation: plDot 1.2s ease-in-out infinite;
+    }
+
+    .pl-dots span:nth-child(2) {
+      animation-delay: 0.15s;
+      background: #b375ed;
+    }
+
+    .pl-dots span:nth-child(3) {
+      animation-delay: 0.3s;
+      background: #22d3ee;
+    }
+
+    @keyframes plPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+      }
+
+      50% {
+        transform: scale(1.06);
+        box-shadow: 0 0 60px rgba(168, 85, 247, 0.6);
+      }
+    }
+
+    @keyframes plDot {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+      }
+
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .pl-logo,
+      .pl-dots span {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="pageLoader" aria-hidden="true">
+    <div class="pl-logo">LK</div>
+    <div class="pl-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <script>
+    // Hide loader when page is fully loaded
+    window.addEventListener('load', function () {
+      var loader = document.getElementById('pageLoader');
+      if (loader) {
+        setTimeout(function () { loader.classList.add('is-loaded'); }, 250);
+        setTimeout(function () { loader.remove(); }, 900);
+      }
+    });
+    // Safety: hide loader after 4s even if load event never fires
+    setTimeout(function () {
+      var loader = document.getElementById('pageLoader');
+      if (loader) loader.classList.add('is-loaded');
+    }, 4000);
+  </script>
+
+  <!-- ==== SCROLL PROGRESS BAR ==== -->
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+  </div>
+
+  <!-- ==== CUSTOM CURSOR (desktop only, JS-driven) ==== -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ==== NOISE OVERLAY ==== -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <!-- ==== THEME TOGGLE ==== -->
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="bi bi-sun-fill toggle-icon-sun"></i>
+    <i class="bi bi-moon-stars-fill toggle-icon-moon"></i>
+  </button>
+
+  <!-- ==== MINIMAL NAVBAR — brand left, Contact right ==== -->
+  <nav id="mainNav" class="navbar fixed-top custom-navbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="#" data-goto="0">
+        <span class="brand-dot"></span><span class="brand-text">lavleen<span class="brand-accent">.kaur</span></span>
+      </a>
+      <a class="btn btn-primary-cta btn-sm" href="#" data-goto="3"><i class="bi bi-at"></i> Contact Me</a>
+    </div>
+  </nav>
+
+  <!-- ==== GLOBAL ANIMATED BACKGROUND (behind all sections) ==== -->
+  <div class="global-bg" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-particles" id="particles"></div>
+    <div class="bg-circuit">
+      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path class="circuit-path" d="M50,100 L300,100 L300,250 L600,250 L600,400 L900,400 L900,200 L1150,200"
+          stroke="currentColor" stroke-width="1" fill="none" />
+        <path class="circuit-path circuit-path-2" d="M100,700 L400,700 L400,550 L700,550 L700,650 L1100,650"
+          stroke="currentColor" stroke-width="1" fill="none" />
+        <circle class="circuit-node" cx="300" cy="100" r="3" fill="currentColor" />
+        <circle class="circuit-node" cx="600" cy="250" r="3" fill="currentColor" />
+        <circle class="circuit-node" cx="900" cy="400" r="3" fill="currentColor" />
+        <circle class="circuit-node" cx="400" cy="700" r="3" fill="currentColor" />
+        <circle class="circuit-node" cx="700" cy="550" r="3" fill="currentColor" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ==== SCROLL HINT (shows on hero) ==== -->
+  <div class="scroll-hint" id="scrollHint">
+    <span class="mono-font">scroll</span>
+    <div class="scroll-mouse">
+      <div class="scroll-mouse-dot"></div>
+    </div>
+  </div>
+
+  <!-- =====================================
+       FULLSCREEN SECTIONS
+       ===================================== -->
+  <main class="fullpage" id="fullpage">
+
+    <!-- ============= SECTION 0 — HERO ============= -->
+    <section class="page" data-section="0" id="hero">
+      <div class="page-content">
+        <div class="hero-split">
+          <!-- LEFT: Bitmoji -->
+          <div class="hero-left">
+            <div class="bitmoji-wrap" data-anim="zoom-rotate">
+              <div class="bitmoji-ring"></div>
+              <div class="bitmoji-ring bitmoji-ring-2"></div>
+              <div class="bitmoji-inner">
+                <img src="bitmoji.png" alt="Lavleen's Bitmoji waving"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                <div class="avatar-fallback" style="display:none;">
+                  <span class="wave-emoji">👋</span>
+                </div>
+              </div>
+              <div class="float-badge float-badge-1" data-anim="float-in" data-delay="3">
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <div class="float-badge float-badge-2" data-anim="float-in" data-delay="4">
+                <i class="bi bi-braces"></i>
+              </div>
+              <div class="float-badge float-badge-3" data-anim="float-in" data-delay="5">
+                <i class="bi bi-stars"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Text content -->
+          <div class="hero-right">
+            <p class="hero-eyebrow mono-font" data-anim="slide-right" data-delay="1">
+              <span class="eyebrow-dash"></span>
+              <span data-scramble>FRONTEND_DEVELOPER</span>
+            </p>
+
+            <h1 class="hero-greeting" data-anim="type-effect" data-delay="2">
+              <span class="visually-hidden">Lavleen Kaur — Frontend Developer in Chandigarh, India</span>
+              <span class="type-line" aria-hidden="true">hi, I'm <span class="hero-name">lavleen</span><span
+                  class="type-cursor">|</span></span>
+            </h1>
+
+            <p class="hero-tagline mono-font" data-anim="blur-up" data-delay="3">
+              <span class="quote-mark">"</span>Transforming ideas into <span class="accent-text">intelligent</span>
+              code<span class="quote-mark">"</span>
+            </p>
+
+            <p class="hero-desc" data-anim="blur-up" data-delay="4">
+              A frontend developer with solid foundations in design.
+              Passionate about crafting seamless user experiences — I thrive at the
+              intersection of <em>creativity</em> and <em>functionality</em>.
+            </p>
+
+            <div class="hero-cta" data-anim="stagger-up" data-delay="5">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lavleen.kaur17@gmail.com" target="_blank"
+                rel="noopener" class="btn btn-primary-cta stagger-item">
+                <i class="bi bi-at" aria-hidden="true"></i> Hire Me
+              </a>
+              <a href="lavleen-kaur-resume.pdf" target="_blank" rel="noopener"
+                class="btn btn-secondary-cta stagger-item" aria-label="View Lavleen Kaur's resume (opens in new tab)">
+                <i class="bi bi-file-earmark-text" aria-hidden="true"></i> View Resume
+              </a>
+              <a href="#" data-goto="2" class="btn btn-secondary-cta stagger-item">
+                <i class="bi bi-grid-1x2-fill" aria-hidden="true"></i> View My Work
+              </a>
+              <span class="cta-divider stagger-item"></span>
+              <div class="hero-socials stagger-item">
+                <a href="https://github.com/lavleenkaur-13" target="_blank" rel="noopener" class="social-link"
+                  aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <!-- <a href="#" target="_blank" rel="noopener" class="social-link" aria-label="Dribbble"><i
+                    class="bi bi-dribbble"></i></a> -->
+              </div>
+            </div>
+
+            <div class="status-pill mono-font" data-anim="slide-up-bounce" data-delay="6">
+              <span class="status-dot"></span> Available for freelance — open to opportunities
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= SECTION 1 — SKILLS ============= -->
+    <section class="page section-alt" data-section="1" id="skills">
+      <div class="page-content">
+
+        <div class="section-header text-center mb-3" data-anim="split-up">
+          <p class="section-tag mono-font"><span class="tag-bracket">[</span> 01 / SKILLS <span
+              class="tag-bracket">]</span></p>
+          <h2 class="section-title" data-glitch="Things I work with">Things I work with</h2>
+          <p class="section-subtitle">Frontend skillset to help you ship beautiful, fast websites.</p>
+          <p class="skills-hint mono-font" data-anim="blur-up" data-delay="2">
+            <i class="bi bi-cursor-fill"></i> click the icons to learn what each tool does
+          </p>
+        </div>
+
+        <div class="row g-3 g-md-4 folder-grid stagger-grid" data-anim="stagger-grid" data-delay="1">
+
+          <!-- Folder 1 — Web Markup -->
+          <div class="col-6 col-md-3 stagger-item">
+            <div class="folder-card folder-clean">
+              <span class="fc-number mono-font">01</span>
+              <div class="fc-clean-body">
+                <div class="fc-folder-wrap">
+                  <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" class="fc-folder-svg">
+                    <defs>
+                      <linearGradient id="fcg1a" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#c084fc" />
+                        <stop offset="100%" stop-color="#7c3aed" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M4,28 L4,20 Q4,16 8,16 L42,16 Q46,16 48,20 L52,28 Z" fill="url(#fcg1a)" opacity="0.7" />
+                    <rect x="4" y="28" width="112" height="58" rx="8" fill="url(#fcg1a)" />
+                  </svg>
+                </div>
+                <h3 class="fc-clean-title">Markup &amp; Styling</h3>
+                <div class="fc-tech-list">
+                  <button class="fc-tech-btn" data-lang="HTML5"
+                    data-note="Imagine any website as a house—HTML is the foundation and the walls. Every heading, button, image, and link is built using HTML. Without HTML, no webpage can exist."
+                    data-color="#E34F26">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#E34F26"
+                        d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" />
+                    </svg>
+                    HTML5
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="CSS3"
+                    data-note="If HTML is the structure of a house, then CSS is its interior design. Colors, fonts, spacing, and animations—everything that makes a website beautiful and stylish is done with CSS."
+                    data-color="#1572B6">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#1572B6"
+                        d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" />
+                    </svg>
+                    CSS3
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="Bootstrap"
+                    data-note="Bootstrap is a ready-made toolkit—like IKEA furniture. It provides pre-built buttons, grids, and navbars that you can use directly. With it, building a website becomes about 3x faster."
+                    data-color="#7952B3">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#7952B3"
+                        d="M11.77 11.24H9.956V8.202h2.152c1.103 0 1.704.46 1.704 1.45 0 1.06-.706 1.586-2.04 1.586zm.357 1.55H9.957v3.341h2.222c1.358 0 2.08-.594 2.08-1.69 0-1.061-.65-1.65-2.132-1.65zM24 11.39v1.218c-1.128.108-1.978.32-2.738.954-1.04.866-1.494 2.34-1.494 4.96v3.06c0 1.388-.45 1.81-1.51 1.81H1.74c-1.061 0-1.51-.421-1.51-1.81v-3.06c0-2.62-.42-4.094-1.46-4.96-.76-.633-1.61-.846-2.738-.954V11.39c1.128-.108 1.978-.32 2.738-.954 1.04-.866 1.46-2.34 1.46-4.96V2.42c0-1.387.45-1.81 1.51-1.81h16.518c1.06 0 1.51.421 1.51 1.81v3.056c0 2.62.453 4.094 1.494 4.96.76.634 1.61.846 2.738.954zm-7.137 5.005c0-1.595-1.123-2.474-3.077-2.677v-.06c1.435-.222 2.396-1.084 2.396-2.41 0-1.55-1.224-2.553-3.482-2.553h-4.388v9.93h4.673c2.343 0 3.878-1.063 3.878-2.802z" />
+                    </svg>
+                    Bootstrap
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Folder 2 — Programming -->
+          <div class="col-6 col-md-3 stagger-item">
+            <div class="folder-card folder-clean">
+              <span class="fc-number mono-font">02</span>
+              <div class="fc-clean-body">
+                <div class="fc-folder-wrap">
+                  <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" class="fc-folder-svg">
+                    <defs>
+                      <linearGradient id="fcg2a" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#67e8f9" />
+                        <stop offset="100%" stop-color="#0e7490" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M4,28 L4,20 Q4,16 8,16 L42,16 Q46,16 48,20 L52,28 Z" fill="url(#fcg2a)" opacity="0.7" />
+                    <rect x="4" y="28" width="112" height="58" rx="8" fill="url(#fcg2a)" />
+                  </svg>
+                </div>
+                <h3 class="fc-clean-title">Programming</h3>
+                <div class="fc-tech-list">
+                  <button class="fc-tech-btn" data-lang="JavaScript"
+                    data-note="JavaScript brings websites to life. HTML gives structure, CSS handles style — JavaScript adds the behavior. I use vanilla JS for DOM manipulation, form validation, smooth animations, and dynamic UI interactions across all my client projects."
+                    data-color="#F7DF1E">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#F7DF1E"
+                        d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z" />
+                    </svg>
+                    JavaScript
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="jQuery"
+                    data-note="jQuery is a lightweight JavaScript library that makes DOM manipulation, event handling, and AJAX requests easier. I use it in Laravel-based client projects (like ProRaabta admin panel) where DataTables, form validation, and quick interactivity benefit from jQuery's simple syntax."
+                    data-color="#0769AD">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#0769AD"
+                        d="M2.114 7.566c-2.71 3.9-2.395 8.97.272 12.973.187.286.394.572.601.844l.215.272c.058.072.122.144.18.215.064.072.144.158.215.23.064.071.121.143.193.207l.022.022c.071.071.143.143.215.222.057.057.108.115.165.165.072.072.151.144.222.215l.187.165.014.022.043.029c.072.064.151.122.222.193l.215.187c.071.058.143.115.222.165.072.058.143.122.215.165l.029.029.022.014.151.108c.072.058.151.108.222.165l.029.022.014.014c.057.043.115.072.165.108.079.057.165.108.244.165l.029.022.014.014c.072.043.143.087.215.122.072.043.151.087.222.13.014.014.014.014.014.014l.057.022c.087.05.165.094.244.135.043.022.087.043.13.064l.022.022c.087.043.165.087.244.122.029.022.058.029.087.043l.014.022.064.022c.087.043.165.072.244.108.029.022.064.029.094.043h.014l.064.022c.087.029.165.057.244.087.029.014.064.029.087.029h.014l.072.022c.079.029.151.057.222.072.043.014.087.029.122.029h.014l.072.022c.072.014.143.022.215.029.043.014.087.014.122.022h.029l.072.014c.057.014.122.014.187.014.043 0 .087.014.13.014h.029l.057.022c.064 0 .122.014.187.014.043 0 .087.014.122.014h.043l.064.014c.057 0 .115.014.165.014h.165l.057.014c.057 0 .108.014.165.014h.215l.043.014c.057 0 .115.014.165.014l.272.014h2.395L7.594 12.36S5.16 13.61 3.844 12.86c-1.316-.752-2.092-2.165-1.73-5.294z" />
+                    </svg>
+                    jQuery
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Folder 3 — Responsive Design -->
+          <div class="col-6 col-md-3 stagger-item">
+            <div class="folder-card folder-clean">
+              <span class="fc-number mono-font">03</span>
+              <div class="fc-clean-body">
+                <div class="fc-folder-wrap">
+                  <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" class="fc-folder-svg">
+                    <defs>
+                      <linearGradient id="fcg3a" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#c084fc" />
+                        <stop offset="100%" stop-color="#22d3ee" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M4,28 L4,20 Q4,16 8,16 L42,16 Q46,16 48,20 L52,28 Z" fill="url(#fcg3a)" opacity="0.7" />
+                    <rect x="4" y="28" width="112" height="58" rx="8" fill="url(#fcg3a)" />
+                  </svg>
+                </div>
+                <h3 class="fc-clean-title">Responsive Design</h3>
+                <div class="fc-tech-list">
+                  <button class="fc-tech-btn" data-lang="Media Queries"
+                    data-note="Media queries are the rules I write to make a website adapt to every screen — phone, tablet, and desktop. I follow a mobile-first approach: build the base layout for small screens, then layer in breakpoints (typically 576px, 768px, 992px, 1200px) to enhance for larger viewports."
+                    data-color="#a855f7">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#a855f7"
+                        d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                    </svg>
+                    Media Queries
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="Flexbox"
+                    data-note="Flexbox is my go-to CSS layout system for one-dimensional alignment — navbars, button rows, card lists, footers. With flex-direction, justify-content, and align-items, I can build responsive components that adjust spacing automatically as the screen size changes."
+                    data-color="#22d3ee">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#22d3ee"
+                        d="M3 5h2v14H3V5zm4 0h2v14H7V5zm4 0h2v14h-2V5zm4 0h2v14h-2V5zm4 0h2v14h-2V5z" />
+                    </svg>
+                    Flexbox
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="CSS Grid"
+                    data-note="CSS Grid handles two-dimensional layouts — rows and columns together. I use it for full-page layouts, image galleries, and complex dashboards where Flexbox alone would need too many nested wrappers. grid-template-columns and gap make the code clean and easy to maintain."
+                    data-color="#f5f5fa">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M4 4h7v7H4V4zm0 9h7v7H4v-7zm9-9h7v7h-7V4zm0 9h7v7h-7v-7z" />
+                    </svg>
+                    CSS Grid
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Folder 4 — Tools & Workflow -->
+          <div class="col-6 col-md-3 stagger-item">
+            <div class="folder-card folder-clean">
+              <span class="fc-number mono-font">04</span>
+              <div class="fc-clean-body">
+                <div class="fc-folder-wrap">
+                  <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" class="fc-folder-svg">
+                    <defs>
+                      <linearGradient id="fcg4a" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#67e8f9" />
+                        <stop offset="100%" stop-color="#a855f7" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M4,28 L4,20 Q4,16 8,16 L42,16 Q46,16 48,20 L52,28 Z" fill="url(#fcg4a)" opacity="0.7" />
+                    <rect x="4" y="28" width="112" height="58" rx="8" fill="url(#fcg4a)" />
+                  </svg>
+                </div>
+                <h3 class="fc-clean-title">Tools &amp; Workflow</h3>
+                <div class="fc-tech-list">
+                  <button class="fc-tech-btn" data-lang="Git &amp; GitHub"
+                    data-note="Git is the version control system I use for every project. GitHub hosts my repositories and makes it easy to share code with clients. I commit regularly with clear messages, use branches for new features, and rely on Git history to track exactly what changed and when."
+                    data-color="#ffffff">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="currentColor"
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>
+                    Git &amp; GitHub
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="VS Code"
+                    data-note="VS Code is my daily code editor. Set up with Live Server, Prettier, ESLint, and a few productivity extensions, it lets me write, debug, and preview code in one place. Integrated terminal and Git tools make my workflow fast and uninterrupted."
+                    data-color="#22d3ee">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#22d3ee"
+                        d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z" />
+                    </svg>
+                    VS Code
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="Chrome DevTools"
+                    data-note="Chrome DevTools is where I debug, inspect, and test every site I build. I use the Elements panel for CSS tweaks, the Console for JS errors, the Network tab to check API calls and load performance, and the device toolbar to verify responsive layouts on different screen sizes."
+                    data-color="#4285F4">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#4285F4"
+                        d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728z" />
+                    </svg>
+                    DevTools
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="Figma to Code"
+                    data-note="When a designer hands me a Figma file, I convert it into pixel-perfect, responsive code. I work with auto-layouts, components, and design tokens so the final website matches every spacing, color, and typography choice from the design."
+                    data-color="#F24E1E">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#F24E1E"
+                        d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z" />
+                    </svg>
+                    Figma to Code
+                  </button>
+                  <span class="fc-dot">·</span>
+                  <button class="fc-tech-btn" data-lang="FileZilla"
+                    data-note="FileZilla is an FTP tool I use to push websites live and upload design edits. Whenever a client requests revisions on a live site — updated images, copy changes, or CSS tweaks — FileZilla lets me push those files directly to the server."
+                    data-color="#BF0000">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#BF0000"
+                        d="M3 3h18v2H3zm0 4h18v2H3zm0 4h12v2H3zm0 4h12v2H3zm0 4h8v2H3zm14-4l4 4-4 4v-3h-4v-2h4z" />
+                    </svg>
+                    FileZilla
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── SKILL NOTE POPUP (global, one instance) ── -->
+      <div class="skill-popup" id="skillPopup" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="skill-popup-inner">
+          <button class="skill-popup-close" id="skillPopupClose" aria-label="Close"><i class="bi bi-x"></i></button>
+          <div class="skill-popup-icon" id="skillPopupIcon"></div>
+          <h4 class="skill-popup-name mono-font" id="skillPopupName"></h4>
+          <p class="skill-popup-text" id="skillPopupText"></p>
+          <p class="skill-popup-hint">// tap anywhere outside to close</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============= SECTION 2 — PROJECTS ============= -->
+    <section class="page" data-section="2" id="projects">
+
+      <div class="page-content">
+        <div class="section-header text-center mb-4" data-anim="split-up">
+          <p class="section-tag mono-font"><span class="tag-bracket">[</span> 02 / PROJECTS <span
+              class="tag-bracket">]</span></p>
+          <h2 class="section-title" data-glitch="Featured projects">Featured projects</h2>
+          <p class="section-subtitle">A handful of pieces I'm proud of.</p>
+        </div>
+
+        <div class="row g-3 stagger-grid" data-anim="stagger-grid" data-delay="1">
+          <div class="col-md-6 stagger-item slide-from-left">
+            <article class="project-card">
+              <div class="project-thumb">
+                <div class="project-thumb-inner project-cosmic">
+                  <img src="cosmicgalaxy.png"
+                    alt="Cosmic Galaxy — space-themed streetwear e-commerce site with auth, orders, and wishlist built on Supabase"
+                    class="project-thumb-img" onerror="this.style.display='none'">
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <h3 class="project-name">Cosmic Galaxy</h3>
+                  <!-- <span class="project-year mono-font">2025</span> -->
+                </div>
+                <p class="project-type mono-font">E-Commerce / Streetwear</p>
+                <p class="project-desc">Space-themed streetwear store with auth, orders, and wishlist powered by
+                  Supabase.</p>
+                <div class="project-links">
+                  <a href="https://lavleenkaur-13.github.io/cosmic-galaxy/" class="btn btn-sm btn-primary-cta"
+                    target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Live</a>
+                  <a href="https://github.com/lavleenkaur-13/cosmic-galaxy" class="btn btn-sm btn-secondary-cta"
+                    target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 stagger-item slide-from-right">
+            <article class="project-card">
+              <div class="project-thumb">
+                <div class="project-thumb-inner project-pehnawa">
+                  <img src="pehnawapanjab.png"
+                    alt="Pehnawa Panjab — Punjabi heritage fashion brand website built with Bootstrap 5"
+                    class="project-thumb-img" onerror="this.style.display='none'">
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <h3 class="project-name">Pehnawa Panjab</h3>
+                  <!-- <span class="project-year mono-font">2025</span> -->
+                </div>
+                <p class="project-type mono-font">Fashion / Brand</p>
+                <p class="project-desc">Polished brand website with full Bootstrap and SEO setup.</p>
+                <div class="project-links">
+                  <a href="https://lavleenkaur-13.github.io/pehnawapanjab/" class="btn btn-sm btn-primary-cta"
+                    target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Live</a>
+                  <a href="https://github.com/lavleenkaur-13/pehnawapanjab" class="btn btn-sm btn-secondary-cta"
+                    target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 stagger-item slide-from-left">
+            <article class="project-card">
+              <div class="project-thumb">
+                <div class="project-thumb-inner project-seoulie">
+                  <img src="seoulie.png"
+                    alt="Seoulie — Korean fashion landing page with pastel design system and smooth scroll interactions"
+                    class="project-thumb-img" onerror="this.style.display='none'">
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <h3 class="project-name">Seoulie</h3>
+                  <!-- <span class="project-year mono-font">2025</span> -->
+                </div>
+                <p class="project-type mono-font">Lifestyle / Landing</p>
+                <p class="project-desc">Clean modern landing page with Bootstrap 5 and smooth interactions.</p>
+                <div class="project-links">
+                  <a href="https://lavleenkaur-13.github.io/Seoulie/" class="btn btn-sm btn-primary-cta" target="_blank"
+                    rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Live</a>
+                  <a href="https://github.com/lavleenkaur-13/Seoulie" class="btn btn-sm btn-secondary-cta"
+                    target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 stagger-item slide-from-right">
+            <article class="project-card">
+              <div class="project-thumb">
+                <div class="project-thumb-inner project-loaflab">
+                  <img src="loaflab.png"
+                    alt="Loaf Lab — interactive mobile app UI prototype for an artisan bakery with dark and lime green design system"
+                    class="project-thumb-img" onerror="this.style.display='none'">
+                </div>
+              </div>
+              <div class="project-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <h3 class="project-name">Loaf Lab</h3>
+                  <!-- <span class="project-year mono-font">2024</span> -->
+                </div>
+                <p class="project-type mono-font">Bakery / Mobile UI</p>
+                <p class="project-desc">Interactive mobile app UI prototype with dark/lime aesthetic.</p>
+                <div class="project-links">
+                  <a href="https://lavleenkaur-13.github.io/loaflab/" class="btn btn-sm btn-primary-cta" target="_blank"
+                    rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Live</a>
+                  <a href="https://github.com/lavleenkaur-13/loaflab" class="btn btn-sm btn-secondary-cta"
+                    target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="text-center mt-3" data-anim="slide-up-bounce" data-delay="2">
+          <a href="https://github.com/lavleenkaur-13" class="btn btn-outline-cta" target="_blank" rel="noopener">
+            <i class="bi bi-github"></i> View all on GitHub <i class="bi bi-arrow-up-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= SECTION 3 — CONTACT ============= -->
+    <section class="page page-contact" data-section="3" id="contact">
+
+      <div class="page-content">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7" data-anim="split-up">
+            <p class="section-tag mono-font"><span class="tag-bracket">[</span> 03 / CONTACT <span
+                class="tag-bracket">]</span></p>
+            <h2 class="footer-title" data-glitch="Let's build together.">Let's build something <span
+                class="hero-name">together</span>.</h2>
+            <p class="footer-sub">Fill in the form or reach out directly. I respond within 24 hours.</p>
+
+            <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST"
+              novalidate>
+
+              <input type="hidden" name="access_key" value="fc17d8c7-90be-4986-8ab4-76efc776805b">
+              <input type="hidden" name="subject" value="New portfolio inquiry from {{name}}">
+              <input type="hidden" name="from_name" value="Lavleen Kaur Portfolio">
+              <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off"
+                aria-hidden="true">
+
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <label for="contact-name" class="visually-hidden">Your name</label>
+                  <input type="text" id="contact-name" name="name" class="form-control" placeholder="Your name"
+                    autocomplete="name" minlength="2" maxlength="80" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="contact-email" class="visually-hidden">Your email</label>
+                  <input type="email" id="contact-email" name="email" class="form-control" placeholder="you@example.com"
+                    autocomplete="email" required />
+                </div>
+                <div class="col-12">
+                  <label for="contact-message" class="visually-hidden">Your message</label>
+                  <textarea id="contact-message" name="message" class="form-control" rows="3"
+                    placeholder="Tell me about your project..." minlength="10" maxlength="2000" required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary-cta btn-lg" id="contactSubmit" aria-label="Send message">
+                    <span class="contact-submit-text">Send message</span>
+                    <i class="bi bi-send ms-1" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="col-12">
+                  <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-lg-5" data-anim="zoom-rotate" data-delay="1">
+            <div class="footer-card">
+
+              <div class="footer-avatar mono-font">LK</div>
+              <h3 class="footer-name">Lavleen Kaur</h3>
+              <p class="footer-role mono-font">Frontend Developer</p>
+              <p class="footer-bio">Open to freelance projects
+                worldwide.</p>
+              <div class="footer-socials">
+                <a href="https://github.com/lavleenkaur-13" target="_blank" rel="noopener" aria-label="GitHub"><i
+                    class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="mailto:lavleen.kaur17@gmail.com" aria-label="Email Lavleen"><i class="bi bi-envelope"
+                    aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="copyright-strip mono-font small muted text-center mt-4" data-anim="slide-up-bounce" data-delay="2">
+          © <span id="copyrightYear">2026</span> Lavleen Kaur. <span class="accent-text">{</span> crafted with care
+          <span class="accent-text">}</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

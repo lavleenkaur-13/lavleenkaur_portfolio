@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lavleenkaur-13.github.io/lavleenkaur_portfolio/sitemap.xml

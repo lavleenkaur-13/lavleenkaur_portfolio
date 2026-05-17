@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page not found | Lavleen Kaur</title>
+    <meta name="description"
+        content="The page you're looking for doesn't exist on this portfolio. Head back home to see Lavleen's work." />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0a0a0f;
+            --text: #f5f5fa;
+            --text-muted: #b4b4c4;
+            --text-dim: #74748a;
+            --accent: #a855f7;
+            --accent-2: #22d3ee;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        html,
+        body {
+            height: 100%;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background glows */
+        .bg-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(168, 85, 247, 0.3);
+            top: -100px;
+            left: -150px;
+        }
+
+        .bg-glow-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(34, 211, 238, 0.2);
+            bottom: -100px;
+            right: -100px;
+        }
+
+        /* Subtle grid */
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            padding: 6px 14px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-2);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4);
+            }
+
+            50% {
+                opacity: 0.6;
+                box-shadow: 0 0 0 8px rgba(34, 211, 238, 0);
+            }
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(80px, 18vw, 160px);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(22px, 4vw, 32px);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .description {
+            color: var(--text-muted);
+            font-size: clamp(14px, 2.5vw, 16px);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .description code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--accent-2);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #0a0a0f;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(168, 85, 247, 0.08);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .footer-strip {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            z-index: 1;
+        }
+
+        .footer-strip span {
+            color: var(--accent);
+        }
+
+        @media (max-width: 480px) {
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="container">
+        <div class="tag">
+            <span class="dot"></span>
+            <span>ERROR · 404</span>
+        </div>
+
+        <h1>404</h1>
+        <h2>Page not found</h2>
+
+        <p class="description">
+            Looks like the page you're looking for doesn't exist or has been moved.
+            Maybe a <code>typo</code> in the URL? Let's get you back on track.
+        </p>
+
+        <div class="actions">
+            <a href="./" class="btn btn-primary">
+                ← Take me home
+            </a>
+            <a href="./#projects" class="btn btn-secondary">
+                View projects
+            </a>
+        </div>
+    </div>
+
+    <p class="footer-strip">
+        © Lavleen Kaur · <span>{</span> still here, just lost <span>}</span>
+    </p>
+
+</body>
+
+</html>

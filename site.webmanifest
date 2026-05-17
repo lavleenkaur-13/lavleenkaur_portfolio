@@ -1,0 +1,10 @@
+{
+  "name": "Lavleen Kaur — Frontend Developer Portfolio",
+  "short_name": "Lavleen Portfolio",
+  "description": "Frontend Developer from Chandigarh. HTML, CSS, Bootstrap, JavaScript projects.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "icons": [{"src": "assets/images/favicon.svg", "sizes": "any", "type": "image/svg+xml"}]
+}
