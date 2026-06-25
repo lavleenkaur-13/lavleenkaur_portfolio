@@ -1348,7 +1348,7 @@ body {
 }
 
 .folder-grid {
-  max-width: 1080px;
+  max-width: 1220px;
   margin: 0 auto;
 }
 
@@ -1448,6 +1448,13 @@ body {
   align-items: flex-start;
   justify-content: center;
   gap: 0.4rem;
+}
+
+.fc-tech-list--wrap {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.5rem;
 }
 
 .fc-dot {
