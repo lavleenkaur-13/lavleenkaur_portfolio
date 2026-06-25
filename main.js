@@ -182,75 +182,13 @@
   }
 
   /* ============================================================
-     6a. AUTO-UPDATE COPYRIGHT YEAR
+     6b. CONTACT FORM (placeholder)
      ============================================================ */
-  const yearEl = document.getElementById('copyrightYear');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-
-  /* ============================================================
-     6b. CONTACT FORM (Web3Forms backend)
-     ============================================================ */
-  const contactForm = document.getElementById('contactForm');
-  const contactStatus = document.getElementById('formStatus');
-  const contactSubmit = document.getElementById('contactSubmit');
-  const contactSubmitText = contactForm ? contactForm.querySelector('.contact-submit-text') : null;
-
-  function setFormStatus(type, message) {
-    if (!contactStatus) return;
-    contactStatus.className = 'form-status form-status--' + type + ' is-visible';
-    contactStatus.textContent = message;
-  }
-
-  function clearFormStatus() {
-    if (!contactStatus) return;
-    contactStatus.className = 'form-status';
-    contactStatus.textContent = '';
-  }
-
+  const contactForm = document.querySelector('.contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', async function (e) {
+    contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-
-      // Honeypot check — if filled, silently ignore (bot detected)
-      const honeypot = contactForm.querySelector('.form-honeypot');
-      if (honeypot && honeypot.checked) return;
-
-      // Native HTML5 validation
-      if (!contactForm.checkValidity()) {
-        contactForm.reportValidity();
-        return;
-      }
-
-      // Disable button + show loading state
-      if (contactSubmit) contactSubmit.disabled = true;
-      if (contactSubmitText) contactSubmitText.textContent = 'Sending...';
-      clearFormStatus();
-
-      try {
-        const formData = new FormData(contactForm);
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          setFormStatus('success', "Thanks! Your message is delivered. I'll respond within 24 hours.");
-          contactForm.reset();
-        } else {
-          const errMsg = (result && result.message) ? result.message : 'Something went wrong. Please email lavleen.kaur17@gmail.com directly.';
-          setFormStatus('error', errMsg);
-        }
-      } catch (err) {
-        setFormStatus('error', 'Network error. Please check your connection or email lavleen.kaur17@gmail.com directly.');
-      } finally {
-        if (contactSubmit) contactSubmit.disabled = false;
-        if (contactSubmitText) contactSubmitText.textContent = 'Send message';
-      }
+      alert('Form ready — connect Formspree / Web3Forms here.');
     });
   }
 
@@ -375,67 +313,5 @@
     const initialScrambles = pages[currentIndex].querySelectorAll('[data-scramble]');
     initialScrambles.forEach(s => scrambleText(s));
   }, 600);
-
-
-  /* ============================================================
-     10. SKILL NOTE POPUP (click on fc-tech-btn)
-     ============================================================ */
-  const skillPopup = document.getElementById('skillPopup');
-  const skillPopupClose = document.getElementById('skillPopupClose');
-  const skillPopupIcon = document.getElementById('skillPopupIcon');
-  const skillPopupName = document.getElementById('skillPopupName');
-  const skillPopupText = document.getElementById('skillPopupText');
-
-  function openSkillPopup(btn) {
-    const lang = btn.getAttribute('data-lang');
-    const note = btn.getAttribute('data-note');
-    const color = btn.getAttribute('data-color') || 'var(--accent)';
-    const iconSVG = btn.querySelector('svg') ? btn.querySelector('svg').outerHTML : '';
-
-    skillPopupIcon.innerHTML = iconSVG;
-    skillPopupName.textContent = lang;
-    skillPopupText.textContent = note;
-
-    // Dynamic accent colour per language
-    skillPopup.style.setProperty('--popup-accent', color);
-    skillPopupIcon.style.borderColor = color + '55';
-    skillPopupIcon.style.boxShadow = '0 4px 20px ' + color + '33';
-
-    skillPopup.setAttribute('aria-hidden', 'false');
-    skillPopup.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-
-    // Mark button active
-    document.querySelectorAll('.fc-tech-btn').forEach(b => b.classList.remove('is-active'));
-    btn.classList.add('is-active');
-  }
-
-  function closeSkillPopup() {
-    skillPopup.classList.remove('is-open');
-    skillPopup.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    document.querySelectorAll('.fc-tech-btn').forEach(b => b.classList.remove('is-active'));
-  }
-
-  if (skillPopup) {
-    // Delegate clicks on all tech buttons
-    document.addEventListener('click', function (e) {
-      const btn = e.target.closest('.fc-tech-btn');
-      if (btn) { e.stopPropagation(); openSkillPopup(btn); return; }
-
-      // Close on backdrop click
-      if (skillPopup.classList.contains('is-open') && !e.target.closest('.skill-popup-inner')) {
-        closeSkillPopup();
-      }
-    });
-
-    // Close button
-    if (skillPopupClose) skillPopupClose.addEventListener('click', closeSkillPopup);
-
-    // Close on Escape
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && skillPopup.classList.contains('is-open')) closeSkillPopup();
-    });
-  }
 
 })();
