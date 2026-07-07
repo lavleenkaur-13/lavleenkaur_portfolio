@@ -1861,6 +1861,18 @@ body {
     linear-gradient(135deg, #134e4a 0%, #4c1d95 100%);
 }
 
+.project-tamannaah {
+  background:
+    radial-gradient(circle at 30% 30%, #be185d 0%, transparent 50%),
+    linear-gradient(135deg, #1e1b4b 0%, #831843 100%);
+}
+
+.project-crush {
+  background:
+    radial-gradient(circle at 30% 30%, #fda4af 0%, transparent 50%),
+    linear-gradient(135deg, #4a0010 0%, #9f1239 60%, #fda4af 100%);
+}
+
 .project-body {
   padding: 0.85rem 1rem 0.95rem;
   flex-grow: 1;
@@ -2418,6 +2430,11 @@ body {
 
   #hero.page {
     align-items: center;
+    padding-top: 75px;
+  }
+
+  #projects.page {
+    align-items: flex-start;
     padding-top: 75px;
   }
 
