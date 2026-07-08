@@ -2422,10 +2422,76 @@ body {
 }
 
 @media (max-width: 767.98px) {
+  /* ---- Native scroll layout ---- */
+  html {
+    height: auto;
+    overflow: visible;
+  }
+
+  body {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .fullpage {
+    position: relative;
+    height: auto;
+    overflow-x: hidden;
+  }
+
   .page {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100dvh;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    z-index: auto;
     padding: 75px 1rem 5rem;
-    align-items: flex-start;
-    overflow-y: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .page-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .folder-grid {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .page.is-active,
+  .page.is-prev {
+    opacity: 1;
+    transform: none;
+    z-index: auto;
+  }
+
+  /* Reset all entrance animations so content is always visible */
+  [data-anim],
+  [data-anim] .stagger-item,
+  [data-anim] > *,
+  [data-anim] .type-line {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+    animation: none !important;
+    /* width: auto !important; */
+    clip-path: none !important;
+  }
+
+  .scroll-progress,
+  .scroll-hint,
+  .type-cursor {
+    display: none !important;
   }
 
   #hero.page {
